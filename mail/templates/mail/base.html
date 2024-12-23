@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gmail Clone</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'inbox' %}">Inbox</a> |
+        <a href="{% url 'sent_emails' %}">Sent</a> |
+        <a href="{% url 'compose' %}">Compose</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
