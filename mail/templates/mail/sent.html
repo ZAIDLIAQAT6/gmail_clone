@@ -1,13 +1,14 @@
 {% extends "mail/base.html" %}
-
-{% load static %}
-
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <h2>Inbox</h2>
-    <ul>
-        {% for email in emails %}
-            <li>{{ email.subject }} - {{ email.sender }}</li>
-        {% endfor %}
-    </ul>
+<h2>Sent Emails</h2>
+<ul>
+    {% for email in emails %}
+        <li>
+            {{ email.subject }} - {{ email.recipient }}
+            <form action="{% url 'email_log' email.recipient %}" method="GET" style="display:inline;">
+                <button type="submit">Log Info</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}
