@@ -1,14 +1,17 @@
 {% extends "mail/base.html" %}
+
 {% block content %}
-<h2>Sent Emails</h2>
-<ul>
-    {% for email in emails %}
-        <li>
-            {{ email.subject }} - {{ email.recipient }}
-            <form action="{% url 'email_log' email.recipient %}" method="GET" style="display:inline;">
-                <button type="submit">Log Info</button>
-            </form>
-        </li>
-    {% endfor %}
-</ul>
+    <h2>Sent Emails</h2>
+    <ul>
+        {% for email in emails %}
+            <li>
+                {{ email.subject }} - {{ email.recipient }}
+                <form action="{% url 'email_log' email.recipient %}" method="GET" style="display:inline;">
+                    <button type="submit">Log Info</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No sent emails found.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

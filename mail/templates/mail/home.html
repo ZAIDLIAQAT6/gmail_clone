@@ -1,0 +1,17 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <h1>Welcome to the Gmail Clone!</h1>
+    <p>Please log in or register to access your inbox:</p>
+
+    <div class="auth-links">
+      <a href="{% url 'login' %}?next={% url 'inbox' %}" class="btn-login">Login</a>
+      <a href="{% url 'register' %}" class="btn-register">Register</a>
+    </div>
+  </body>
+</html>

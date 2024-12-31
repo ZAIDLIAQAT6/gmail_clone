@@ -56,9 +56,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',  # If you have global templates
+            BASE_DIR / 'templates',  # Global templates directory
         ],
-        'APP_DIRS': True,  # Ensures that templates in app directories are loaded
+        'APP_DIRS': True,  # Ensures app-level templates are loaded
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -69,6 +69,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 
 WSGI_APPLICATION = 'gmail_clone.wsgi.application'
@@ -125,10 +127,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# If you're running in development, ensure that you have:
+# For development purposes, ensure you have:
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Add the static folder location
 ]
+
+# Ensure static files are served correctly during development
+STATIC_ROOT = BASE_DIR / "staticfiles"  # This is used for collecting static files in production
+
 
 
 # Default primary key field type

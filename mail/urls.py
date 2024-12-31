@@ -1,16 +1,14 @@
-from django.contrib import admin
-from django.urls import path, include
-from mail.views import inbox, sent_emails, compose_email, email_log, home
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    # Uncomment the following lines if you need admin or authentication routes
-    # path('admin/', admin.site.urls),
-    # path('accounts/', include('django.contrib.auth.urls')),
-
-    # Main app routes
-    path('', home, name='home'),  # Home page
-    path('inbox/', inbox, name='inbox'),  # Inbox page
-    path('sent/', sent_emails, name='sent_emails'),  # Sent emails page
-    path('compose/', compose_email, name='compose'),  # Compose email page
-    path('email-log/<str:email_address>/', email_log, name='email_log'),  # Email log page for Log Info button
+    path('', views.home, name='home'),
+    path('login/', views.user_login, name='login'),
+    path('register/', views.user_register, name='register'),
+    path('logout/', views.user_logout, name='logout'),  # Logout URL
+    path('inbox/', views.inbox, name='inbox'),
+    path('sent/', views.sent_emails, name='sent_emails'),
+    path('compose/', views.compose_email, name='compose_email'),
+    path('email_log/<str:email_address>/', views.email_log, name='email_log'),
+    # Other URL patterns
 ]

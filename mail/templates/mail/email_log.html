@@ -1,19 +1,15 @@
-{% extends "mail/base.html" %}
+{% extends 'mail/base.html' %}
+
 {% block content %}
-<div class="container">
-    <h2>Email Log for {{ email_address }}</h2>
-    <ul class="email-log-list">
+    <h1>Email Log for {{ user.username }}</h1>
+    <ul>
         {% for email in emails %}
-        <li class="email-log-item">
-            <p><strong>Subject:</strong> {{ email.subject }}</p>
-            <p><strong>Sender:</strong> {{ email.sender }}</p>
-            <p><strong>Recipient:</strong> {{ email.recipient }}</p>
-            <p><strong>Body:</strong> {{ email.body }}</p>
-            <p><strong>Timestamp:</strong> {{ email.timestamp }}</p>
-        </li>
-        {% empty %}
-        <li class="no-emails">No emails found for this user.</li>
+            <li>
+                <strong>Subject:</strong> {{ email.subject }}<br>
+                <strong>Sent to:</strong> {{ email.recipient.username }}<br>
+                <strong>Sent at:</strong> {{ email.timestamp|date:"Y-m-d H:i" }}<br>  <!-- Display timestamp -->
+                <p>{{ email.body }}</p>
+            </li>
         {% endfor %}
     </ul>
-</div>
 {% endblock %}
